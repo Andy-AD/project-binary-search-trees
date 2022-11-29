@@ -190,6 +190,10 @@ class Tree {
         : leftSubtreeHeight - rightSubTreeHeight;
     return difference <= 1;
   }
+  rebalance() {
+    let treeArray = this.inorder(this.root);
+    this.root = this.buildTree(treeArray);
+  }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
