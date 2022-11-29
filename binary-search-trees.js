@@ -181,6 +181,15 @@ class Tree {
     }
     return depth;
   }
+  isBalanced() {
+    let leftSubtreeHeight = this.height(this.root.left);
+    let rightSubTreeHeight = this.height(this.root.right);
+    let difference =
+      leftSubtreeHeight <= rightSubTreeHeight
+        ? rightSubTreeHeight - leftSubtreeHeight
+        : leftSubtreeHeight - rightSubTreeHeight;
+    return difference <= 1;
+  }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
