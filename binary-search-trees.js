@@ -152,6 +152,23 @@ class Tree {
     if (cb) cb(root);
     return array;
   }
+  height(node) {
+    if (!node) return;
+    let height = 0;
+    let heightLeft = 0;
+    let heightRight = 0;
+    if (node.left) {
+      heightLeft = this.height(node.left);
+    }
+    if (node.right) {
+      heightRight = this.height(node.right);
+    }
+    node.left || node.right ? (height = 1) : (height = 0);
+    heightLeft <= heightRight
+      ? (height += heightRight)
+      : (height += heightLeft);
+    return height;
+  }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
