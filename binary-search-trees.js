@@ -196,6 +196,28 @@ class Tree {
   }
 }
 
+function test() {
+  let tree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+  if (!tree.isBalanced()) return "Test 1 failed - Tree is not balanced!";
+  console.log("Level order\n", tree.levelOrderIterative());
+  console.log("Pre order\n", tree.preorder(tree.root));
+  console.log("Post order\n", tree.postorder(tree.root));
+  console.log("In order\n", tree.inorder(tree.root));
+  tree.insert(101);
+  tree.insert(102);
+  tree.insert(103);
+  if (tree.isBalanced()) return "Test 2 failed: Tree is not unbalanced!";
+  tree.rebalance();
+  if (!tree.isBalanced()) return "Test 3 failed: Tree is not rebalanced!";
+  console.log("Level order\n", tree.levelOrderIterative());
+  console.log("Pre order\n", tree.preorder(tree.root));
+  console.log("Post order\n", tree.postorder(tree.root));
+  console.log("In order\n", tree.inorder(tree.root));
+  return console.log("Success! All tests passed!");
+}
+
+test();
+
 const prettyPrint = (node, prefix = "", isLeft = true) => {
   if (!node) return console.log("Tree is empty!");
   if (node.right !== null) {
