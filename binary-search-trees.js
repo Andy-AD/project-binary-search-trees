@@ -169,6 +169,18 @@ class Tree {
       : (height += heightLeft);
     return height;
   }
+  depth(node, root) {
+    if (!node || !root) return;
+    let depth = 0;
+    let currentNode = root;
+    while (node != currentNode) {
+      node.data < currentNode.data
+        ? (currentNode = currentNode.left)
+        : (currentNode = currentNode.right);
+      depth++;
+    }
+    return depth;
+  }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
